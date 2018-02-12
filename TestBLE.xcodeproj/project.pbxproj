@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		128F19E02030EDAA008C110E /* SwiftEventBus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 128F19DD2030EDAA008C110E /* SwiftEventBus.framework */; };
+		128F19E12030EDAA008C110E /* SwiftEventBus.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 128F19DD2030EDAA008C110E /* SwiftEventBus.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		128F19E22030EDAA008C110E /* BeamUserNotificationKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 128F19DE2030EDAA008C110E /* BeamUserNotificationKit.framework */; };
+		128F19E32030EDAA008C110E /* BeamUserNotificationKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 128F19DE2030EDAA008C110E /* BeamUserNotificationKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		128F19E42030EDAA008C110E /* Hydra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 128F19DF2030EDAA008C110E /* Hydra.framework */; };
+		128F19E52030EDAA008C110E /* Hydra.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 128F19DF2030EDAA008C110E /* Hydra.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		128F19E72030EDD9008C110E /* NotificationExtentsion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128F19E62030EDD9008C110E /* NotificationExtentsion.swift */; };
 		7032B6BF202E6D8400C55551 /* LogWrapperKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7032B6BE202E6D8400C55551 /* LogWrapperKit.framework */; };
 		7032B6C0202E6D8400C55551 /* LogWrapperKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7032B6BE202E6D8400C55551 /* LogWrapperKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7032B6C2202E8C8800C55551 /* ServicesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7032B6C1202E8C8800C55551 /* ServicesTableViewController.swift */; };
@@ -40,7 +47,10 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				128F19E12030EDAA008C110E /* SwiftEventBus.framework in Embed Frameworks */,
+				128F19E32030EDAA008C110E /* BeamUserNotificationKit.framework in Embed Frameworks */,
 				7032B6C0202E6D8400C55551 /* LogWrapperKit.framework in Embed Frameworks */,
+				128F19E52030EDAA008C110E /* Hydra.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -48,6 +58,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		128F19DD2030EDAA008C110E /* SwiftEventBus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftEventBus.framework; path = Carthage/Build/iOS/SwiftEventBus.framework; sourceTree = "<group>"; };
+		128F19DE2030EDAA008C110E /* BeamUserNotificationKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BeamUserNotificationKit.framework; path = Carthage/Build/iOS/BeamUserNotificationKit.framework; sourceTree = "<group>"; };
+		128F19DF2030EDAA008C110E /* Hydra.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Hydra.framework; path = Carthage/Build/iOS/Hydra.framework; sourceTree = "<group>"; };
+		128F19E62030EDD9008C110E /* NotificationExtentsion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExtentsion.swift; sourceTree = "<group>"; };
 		7032B6BE202E6D8400C55551 /* LogWrapperKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LogWrapperKit.framework; path = Carthage/Build/iOS/LogWrapperKit.framework; sourceTree = "<group>"; };
 		7032B6C1202E8C8800C55551 /* ServicesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesTableViewController.swift; sourceTree = "<group>"; };
 		7032B6C3202E97C500C55551 /* BTManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTManager.swift; sourceTree = "<group>"; };
@@ -73,7 +87,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				128F19E02030EDAA008C110E /* SwiftEventBus.framework in Frameworks */,
+				128F19E22030EDAA008C110E /* BeamUserNotificationKit.framework in Frameworks */,
 				7032B6BF202E6D8400C55551 /* LogWrapperKit.framework in Frameworks */,
+				128F19E42030EDAA008C110E /* Hydra.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,6 +107,9 @@
 		707F64A1202E6291008A1099 = {
 			isa = PBXGroup;
 			children = (
+				128F19DE2030EDAA008C110E /* BeamUserNotificationKit.framework */,
+				128F19DF2030EDAA008C110E /* Hydra.framework */,
+				128F19DD2030EDAA008C110E /* SwiftEventBus.framework */,
 				7032B6BE202E6D8400C55551 /* LogWrapperKit.framework */,
 				707F64AC202E6291008A1099 /* TestBLE */,
 				707F64C1202E6293008A1099 /* TestBLEUITests */,
@@ -122,6 +142,7 @@
 				707F64AF202E6291008A1099 /* ViewController.swift */,
 				7032B6C5202EECA200C55551 /* UIViewController+TitleBackground.swift */,
 				7032B6C7202EEFBF00C55551 /* CharacteristicsTableViewController.swift */,
+				128F19E62030EDD9008C110E /* NotificationExtentsion.swift */,
 			);
 			path = TestBLE;
 			sourceTree = "<group>";
@@ -255,6 +276,7 @@
 				707F64AE202E6291008A1099 /* AppDelegate.swift in Sources */,
 				707F64D0202E6B58008A1099 /* TestBLE.swift in Sources */,
 				7032B6C2202E8C8800C55551 /* ServicesTableViewController.swift in Sources */,
+				128F19E72030EDD9008C110E /* NotificationExtentsion.swift in Sources */,
 				7032B6C4202E97C500C55551 /* BTManager.swift in Sources */,
 				7032B6C8202EEFBF00C55551 /* CharacteristicsTableViewController.swift in Sources */,
 				7032B6C6202EECA200C55551 /* UIViewController+TitleBackground.swift in Sources */,
@@ -350,7 +372,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -404,7 +426,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;

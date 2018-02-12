@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreBluetooth
+import BeamUserNotificationKit
 
 class CharacteristicsTableViewController: UITableViewController {
 	
@@ -19,6 +20,8 @@ class CharacteristicsTableViewController: UITableViewController {
 	var service: CBService?
 	
 	var items: [CBCharacteristic] = []
+	
+	var textValues: [CBCharacteristic: String] = [:]
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -69,13 +72,7 @@ class CharacteristicsTableViewController: UITableViewController {
 			cell.accessoryType = .none
 		}
 
-		cell.detailTextLabel?.text = nil
-
-		if let value = charartistic.value {
-			if let text = String(data: value, encoding: .utf8) {
-				cell.detailTextLabel?.text = text
-			}
-		}
+		cell.detailTextLabel?.text = textValues[charartistic]
 		
 		return cell
 	}
@@ -89,6 +86,10 @@ class CharacteristicsTableViewController: UITableViewController {
 		}
 		log(debug: "isNotifying: \(charartistic.isNotifying)")
 		tableView.deselectRow(at: indexPath, animated: true)
+		
+		tableView.beginUpdates()
+		tableView.reloadRows(at: [IndexPath(row: indexPath.row, section: 0)], with: .automatic)
+		tableView.endUpdates()
 	}
 	
 }
@@ -242,21 +243,43 @@ extension CharacteristicsTableViewController: CBPeripheralDelegate {
 		guard peripheral.identifier == wrapper.peripheral.identifier else {
 			return
 		}
-		log(debug: "\(characteristic)")
-		if let value = characteristic.value {
-			if let text = String(data: value, encoding: .utf8) {
-				log(debug: "Text = \(text)")
-			} else {
-				log(warning: "Data could not be converted to text")
-			}
-		}
 		guard let row = index(of: characteristic) else {
 			return
 		}
+		textValues[characteristic] = nil
+		guard let value = characteristic.value else {
+			return
+		}
+		
+//		let values: [Int8] = [number(from: value, range: 0...1), number(from: value, range: 2...3), number(from: value, range: 4...5)]
+//
+//		log(debug: "\(values)")
+//		let text = values.map { String($0) }.joined(separator: ", ")
+//		log(debug: "\(text)")
+		let text = value.hexEncodedString()
+		textValues[characteristic] = text
+
 		tableView.beginUpdates()
 		tableView.reloadRows(at: [IndexPath(row: row, section: 0)], with: .automatic)
 		tableView.endUpdates()
+		
+		if UIApplication.shared.applicationState == .background {
+			log(debug: "Generate background notification for \(text)")
+			NotificationServiceManager.shared.addInfo(title: characteristic.uuid.description, body: text).catch { (error) -> (Void) in
+				log(error: "\(error)")
+			}
+		}
+	}
+	
+	func number(from data: Data, range: CountableClosedRange<UInt>) -> Int8 {
+		return Int8(bigEndian: data[range].withUnsafeBytes{ $0.pointee })
 	}
 }
 
-
+extension Data {
+	
+	func hexEncodedString() -> String {
+		let format = "0x%02hhx"
+		return map { String(format: format, $0) }.joined(separator: " ")
+	}
+}
