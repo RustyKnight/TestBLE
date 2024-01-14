@@ -1,0 +1,32 @@
+{
+  "pins" : [
+    {
+      "identity" : "cadmus",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/RustyKnight/Cadmus",
+      "state" : {
+        "revision" : "f2d1d470016ad4e440517e6208c62fc9e3bc066d",
+        "version" : "3.0.0"
+      }
+    },
+    {
+      "identity" : "hermes",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/RustyKnight/Hermes",
+      "state" : {
+        "branch" : "master",
+        "revision" : "54123e8c90f39755e895bbaddb3cab50e779cc36"
+      }
+    },
+    {
+      "identity" : "promisekit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mxcl/PromiseKit",
+      "state" : {
+        "revision" : "8a98e31a47854d3180882c8068cc4d9381bf382d",
+        "version" : "6.22.1"
+      }
+    }
+  ],
+  "version" : 2
+}

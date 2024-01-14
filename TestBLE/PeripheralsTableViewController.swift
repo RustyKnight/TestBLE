@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreBluetooth
+import Cadmus
 
 class PeriperialWrapper {
 	var peripheral: CBPeripheral

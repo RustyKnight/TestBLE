@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreBluetooth
+import Cadmus
 
 class WeakRef<T> where T: AnyObject {
 	
@@ -151,7 +152,7 @@ extension BTManager: CBCentralManagerDelegate {
 	func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
 //		log(error: "\(peripheral)")
 		if let error = error {
-//			log(error: "Error: \(error)")
+			log(error: "Error: \(error)")
 		}
 		compact()
 		for delegate in actualDelegates {

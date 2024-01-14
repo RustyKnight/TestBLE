@@ -8,7 +8,8 @@
 
 import UIKit
 import CoreBluetooth
-import BeamUserNotificationKit
+import Hermes
+import Cadmus
 
 class CharacteristicsTableViewController: UITableViewController {
 	
@@ -31,7 +32,7 @@ class CharacteristicsTableViewController: UITableViewController {
 		super.viewWillAppear(animated)
 		removeAllRows()
 		BTManager.shared.add(delegate: self)
-		guard let peripheral = peripheral, let service = service else {
+        guard let peripheral = peripheral, service != nil else {
 			return
 		}
 		peripheral.peripheral.delegate = self
@@ -46,7 +47,7 @@ class CharacteristicsTableViewController: UITableViewController {
 		}
 		peripheral.peripheral.delegate = nil
 		for item in items {
-			service.peripheral.setNotifyValue(false, for: item)
+            service.peripheral?.setNotifyValue(false, for: item)
 		}
 	}
 	
@@ -80,9 +81,9 @@ class CharacteristicsTableViewController: UITableViewController {
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		let charartistic = items[indexPath.row]
 		if charartistic.isNotifying {
-			charartistic.service.peripheral.setNotifyValue(false, for: charartistic)
+            charartistic.service?.peripheral?.setNotifyValue(false, for: charartistic)
 		} else {
-			charartistic.service.peripheral.setNotifyValue(true, for: charartistic)
+			charartistic.service?.peripheral?.setNotifyValue(true, for: charartistic)
 		}
 		log(debug: "isNotifying: \(charartistic.isNotifying)")
 		tableView.deselectRow(at: indexPath, animated: true)

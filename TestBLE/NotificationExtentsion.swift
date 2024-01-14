@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import UIKit
 import UserNotifications
-import BeamUserNotificationKit
-import Hydra
+import Hermes
+import PromiseKit
 
 //enum UNNotificationActionIdentifier: String, StringIdentifiable {
 //	case retry = "UNNotificationActionIdentifier.retry"
@@ -204,7 +205,7 @@ extension NotificationService {
 								category: StringIdentifiable? = nil,
 								thread: StringIdentifiable? = NotificationThreads.error) -> Promise<Void> {
 		guard UIApplication.shared.applicationState != .background else {
-			return Promise<Void>(resolved: (()))
+            return Promise().asVoid()
 		}
 		return add(identifier: identifier,
 							 title: title,
